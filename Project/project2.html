@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Processing</title>
+    <link rel="stylesheet" href="homepagestyle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+
+</head>
+<body>
+
+    <nav>
+        <a href="homepage.html">Home</a>
+        <a href="career.html">Career</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+
+    <div class="side-nav">
+        <h3>Projects</h3>
+        <ul>
+            <li><a href="project1.html">Dynamic Shopping Cart</a></li>
+            <li><a href="project2.html">Text Processing</a></li>
+            <li><a href="project3.html">JQuery Showcase</a></li>
+            <li><a href="project4.html">Sorting</a></li>
+        </ul>
+    </div>
+
+
+    <div class="background-overlay"></div>
+
+    <fieldset class="text-processing">
+        <div class="input-container">
+            <label for="comment">Enter a paragraph about UWS University:</label>
+            <br />
+            <textarea id="comment" name="feedback" rows="12" cols="60" placeholder="Write your paragraph here..."></textarea>
+            <br />
+            <button id="countSpacesBtn" type="button">Count Spaces before last UWS</button>
+            <div id="result"></div>
+        </div>
+    </fieldset>
+
+    <script>
+        $(function () {
+            $("#countSpacesBtn").on("click", function () {
+                const text = $("#comment").val().toLowerCase();
+                let lastIndex = text.lastIndexOf("uws");
+
+                if (lastIndex === -1) {
+                    lastIndex = text.lastIndexOf("uws");
+                }
+
+                const beforeText = text.substring(0, lastIndex);
+                const spaceCount = (beforeText.match(/ /g) || []).length;
+
+                $("#result").text("Spaces before last 'uws': " + spaceCount);
+            });
+        });
+    </script>
+
+</body>
+</html>
